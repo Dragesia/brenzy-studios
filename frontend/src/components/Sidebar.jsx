@@ -5,6 +5,9 @@ const Sidebar = () => {
 	const [active, setActive] = useState('home');
 	const [sections, setSections] = useState([]);
 	const [hovered, setHovered] = useState('');
+	const [isMobile, setIsMobile] = useState(
+		window.matchMedia('(max-width: 1296px)').matches
+	);
 
 	useEffect(() => {
 		const homeEl = document.querySelector('#home');

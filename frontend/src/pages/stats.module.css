@@ -55,3 +55,13 @@
 	bottom: 0;
 	right: -36px;
 }
+
+@media only screen and (max-width: 1296px) {
+	.innerStats {
+		grid-template-columns: 1fr;
+		width: auto;
+		height: auto;
+		padding: 32px 100px;
+		gap: 24px;
+	}
+}

@@ -76,3 +76,13 @@
 	font-family: 'coolvetica', sans-serif;
 	font-weight: 200;
 }
+
+@media only screen and (max-width: 1296px) {
+	.innerServices {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		width: auto;
+		gap: 12px;
+		margin-bottom: 96px;
+	}
+}

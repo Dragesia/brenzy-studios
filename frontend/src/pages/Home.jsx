@@ -2,21 +2,27 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './home.module.css';
 
 const Home = ({ isOpen }) => {
+	const [isTablet, setIsTablet] = useState(
+		window.matchMedia('(max-width: 1440px)').matches
+	);
+
 	const btRef = useRef();
 	const lmRef = useRef();
 
 	useEffect(() => {
-		btRef.current.querySelectorAll('div').forEach(wrapTextWithSpans);
-		document.addEventListener('mousemove', handleMouseMove);
+		if (!isTablet) {
+			btRef.current.querySelectorAll('div').forEach(wrapTextWithSpans);
+			document.addEventListener('mousemove', handleMouseMove);
 
-		window.addEventListener('scroll', () => {
-			if (window.scrollY === 0) {
-				lmRef.current.classList.remove('hiddenBtn');
-			} else if (window.scrollY > 25) {
-				// Adjust this value to your desired scroll position
-				lmRef.current.classList.add('hiddenBtn');
-			}
-		});
+			window.addEventListener('scroll', () => {
+				if (window.scrollY === 0) {
+					lmRef.current.classList.remove('hiddenBtn');
+				} else if (window.scrollY > 25) {
+					// Adjust this value to your desired scroll position
+					lmRef.current.classList.add('hiddenBtn');
+				}
+			});
+		}
 	}, []);
 
 	useEffect(() => {

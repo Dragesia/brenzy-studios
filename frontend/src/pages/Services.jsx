@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './services.module.css';
 
 const Services = ({ setIsOpen }) => {
+	const [isMobile, setIsMobile] = useState(
+		window.matchMedia('(max-width: 1296px)').matches
+	);
 	const openModal = () => {
 		setIsOpen(true);
 		document.body.classList.add('modal-open');

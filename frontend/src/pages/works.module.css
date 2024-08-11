@@ -38,11 +38,16 @@
 }
 
 .videoContainer {
+	border-radius: 12px;
+	position: relative;
+	transition: 0.2s all;
 }
 
 .videoContainer video {
+	border-radius: 12px;
 	height: 450px;
 	width: auto;
+	cursor: pointer;
 }
 
 .videoContainer:hover {
@@ -87,11 +92,28 @@
 
 .sliderArrowLeft {
 	position: absolute;
-	left: -54px;
+	left: 10px;
+	cursor: pointer;
+	transition: 0.2s all;
+}
+
+.sliderArrowLeft:hover {
+	transform: translateX(-3px);
 }
 
 .sliderArrowRight {
 	position: absolute;
-	right: -54px;
-	z-index: 9999;
+	right: 10px;
+	cursor: pointer;
+	transition: 0.2s all;
+}
+
+.sliderArrowRight:hover {
+	transform: translateX(3px);
+}
+
+@media only screen and (max-width: 1296px) {
+	.videoSlider {
+		grid-template-columns: 1fr;
+	}
 }

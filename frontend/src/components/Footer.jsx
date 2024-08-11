@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './footer.module.css';
 
 const Footer = () => {
+	const [isMobile, setIsMobile] = useState(
+		window.matchMedia('(max-width: 1296px)').matches
+	);
 	return (
 		<div className={styles.footer}>
 			<div className={styles.innerFooter}>
@@ -42,13 +45,15 @@ const Footer = () => {
 						</a>
 					</div>
 				</div>
-				<div className={styles.mid}>
-					<div className={styles.links}>
-						<a href='#'>Privacy Policy</a>
-						<a href='#'>Copyright Policy</a>
-						<a href='#'>Terms of Service</a>
+				{!isMobile && (
+					<div className={styles.mid}>
+						<div className={styles.links}>
+							<a href='#'>Privacy Policy</a>
+							<a href='#'>Copyright Policy</a>
+							<a href='#'>Terms of Service</a>
+						</div>
 					</div>
-				</div>
+				)}
 				<div className={styles.right}>
 					<div className={styles.subscribe}>
 						<div className={styles.subscribeHeader}>

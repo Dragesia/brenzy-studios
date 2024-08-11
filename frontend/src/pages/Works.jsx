@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './works.module.css';
 
 const Works = () => {
+	const [isMobile, setIsMobile] = useState(
+		window.matchMedia('(max-width: 1296px)').matches
+	);
 	const handleVideoMouseEnter = (e) => {
 		e.target.currentTime = 0;
 		e.target.play();
@@ -22,8 +25,8 @@ const Works = () => {
 						xmlns='http://www.w3.org/2000/svg'
 						version='1.1'
 						xmlns:xlink='http://www.w3.org/1999/xlink'
-						width='72'
-						height='72'
+						width='27'
+						height='27'
 						x='0'
 						y='0'
 						viewBox='0 0 490.787 490.787'
@@ -58,39 +61,57 @@ const Works = () => {
 					</a>
 				</div>
 				<div className={styles.videoSlider}>
-					<a
-						target='_blank'
-						className={styles.videoContainer}
-					>
-						<video
-							src='/src/assets/videos/azzapp1.mp4'
-							onMouseEnter={handleVideoMouseEnter}
-							onMouseLeave={handleVideoMouseLeave}
-							muted
-						></video>
-					</a>
-					<a
-						target='_blank'
-						className={styles.videoContainer}
-					>
-						<video
-							src='/src/assets/videos/azzapp2.mp4'
-							muted
-							onMouseEnter={handleVideoMouseEnter}
-							onMouseLeave={handleVideoMouseLeave}
-						></video>
-					</a>
-					<a
-						target='_blank'
-						className={styles.videoContainer}
-					>
-						<video
-							src='/src/assets/videos/azzapp3.mp4'
-							onMouseEnter={handleVideoMouseEnter}
-							onMouseLeave={handleVideoMouseLeave}
-							muted
-						></video>
-					</a>
+					{isMobile && (
+						<a
+							target='_blank'
+							className={styles.videoContainer}
+						>
+							<video
+								src='/src/assets/videos/azzapp1.mp4'
+								onMouseEnter={handleVideoMouseEnter}
+								onMouseLeave={handleVideoMouseLeave}
+								muted
+							></video>
+						</a>
+					)}
+					{!isMobile && (
+						<>
+							<a
+								target='_blank'
+								className={styles.videoContainer}
+							>
+								<video
+									src='/src/assets/videos/azzapp1.mp4'
+									onMouseEnter={handleVideoMouseEnter}
+									onMouseLeave={handleVideoMouseLeave}
+									muted
+								></video>
+							</a>
+							<a
+								target='_blank'
+								className={styles.videoContainer}
+							>
+								<video
+									src='/src/assets/videos/azzapp2.mp4'
+									muted
+									onMouseEnter={handleVideoMouseEnter}
+									onMouseLeave={handleVideoMouseLeave}
+								></video>
+							</a>
+							<a
+								target='_blank'
+								className={styles.videoContainer}
+							>
+								<video
+									src='/src/assets/videos/azzapp3.mp4'
+									onMouseEnter={handleVideoMouseEnter}
+									onMouseLeave={handleVideoMouseLeave}
+									muted
+								></video>
+							</a>
+						</>
+					)}
+
 					{/* <a
 						target='_blank'
 						className={styles.videoContainer}
@@ -130,8 +151,8 @@ const Works = () => {
 						xmlns='http://www.w3.org/2000/svg'
 						version='1.1'
 						xmlns:xlink='http://www.w3.org/1999/xlink'
-						width='72'
-						height='72'
+						width='27'
+						height='27'
 						x='0'
 						y='0'
 						viewBox='0 0 490.8 490.8'

@@ -23,7 +23,7 @@
 	font-family: 'degular', sans-serif;
 	align-items: flex-end;
 	justify-content: space-between;
-	width: 1080px;
+	width: 1280px;
 }
 
 .boldText {
@@ -61,4 +61,38 @@
 	font-weight: 100;
 	line-height: 40px;
 	white-space: nowrap;
+}
+
+@media only screen and (max-width: 1680px) {
+	.homeContent {
+		width: 1080px;
+	}
+}
+
+@media only screen and (max-width: 1440px) {
+	.homeContent {
+		width: 960px;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.learnMore {
+		display: none;
+	}
+	.thinLine {
+		text-align: left;
+	}
+	.thinText {
+		transform: 0;
+	}
+	.boldLine {
+		font-size: 36px;
+		font-weight: 100;
+		line-height: 40px;
+		font-family: 'degular', sans-serif;
+	}
+	.boldText {
+		transform: 0;
+		width: auto;
+	}
 }
