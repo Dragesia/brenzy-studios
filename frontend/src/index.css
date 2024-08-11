@@ -1,0 +1,44 @@
+@import url('https://use.typekit.net/hhh8ohf.css');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background-image: url(assets/Background.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.hidden {
+	opacity: 0;
+	transition: 0.3s all;
+}
+
+.hiddenBtn {
+	opacity: 0;
+	visibility: hidden;
+}
+
+body.modal-open {
+	overflow: hidden;
+	padding-right: 8px;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+	scrollbar-width: none !important;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	display: none !important;
+}

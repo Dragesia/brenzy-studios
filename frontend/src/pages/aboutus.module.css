@@ -1,0 +1,35 @@
+.aboutUs {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+}
+
+.header {
+	font-size: 41px;
+	font-family: 'coolvetica', sans-serif;
+	font-weight: 200;
+}
+
+.innerAboutUs {
+	display: flex;
+	flex-direction: row;
+	width: 950px;
+	justify-content: space-between;
+	align-items: center;
+	gap: 96px;
+}
+
+.aboutUsText {
+	font-size: 48px;
+	font-weight: 200;
+	font-family: 'coolvetica', sans-serif;
+}
+
+.aboutUsIcon > div {
+	background-color: white;
+	border-radius: 100%;
+	height: 450px;
+	width: 450px;
+}

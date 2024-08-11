@@ -1,0 +1,28 @@
+.home {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	background-color: #fff;
+}
+
+.homeContent {
+	text-align: center;
+}
+
+.boldText {
+	font-size: 72px;
+	line-height: 1.5;
+	font-family: 'coolvetica', sans-serif;
+	cursor: default;
+}
+
+.boldText .boldLine {
+	display: inline-block;
+	overflow: hidden;
+}
+
+.boldText span {
+	display: inline-block;
+	transition: font-weight 0.2s, transform 0.2s;
+}

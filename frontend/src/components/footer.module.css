@@ -1,0 +1,142 @@
+.footer {
+	background-color: #111111;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 64px 0;
+}
+
+.innerFooter {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	justify-items: center;
+	width: 950px;
+}
+
+.logoContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 12px;
+}
+
+.left {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 27px;
+	justify-self: left;
+}
+
+.logoContainer > img {
+	height: 56px;
+	width: auto;
+	cursor: pointer;
+}
+
+.logoText {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 24px;
+	font-family: 'fractul-variable', sans-serif;
+	font-variation-settings: 'wght' 100;
+	cursor: pointer;
+	color: white;
+}
+
+.logoText > span {
+	font-variation-settings: 'wght' 900;
+}
+
+.socials {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.socials a {
+	cursor: pointer;
+	height: 48px;
+	width: 48px;
+}
+
+.socials img {
+	height: 48px;
+	width: 48px;
+	transition: all 0.15s;
+}
+.socials img:hover,
+.links a:hover {
+	opacity: 0.8;
+}
+
+.mid {
+	height: 100% !important;
+	display: flex;
+}
+.links {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100% !important;
+}
+
+.links a {
+	font-size: 20px;
+	color: white;
+	text-decoration: none;
+	font-family: 'degular', sans-serif;
+	transition: all 0.15s;
+}
+
+.right {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 27px;
+	justify-self: right;
+}
+
+.subscribe {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.subscribeHeader {
+	font-size: 24px;
+	color: white;
+	font-family: 'degular', sans-serif;
+	font-weight: 300;
+}
+
+.subscribe input {
+	border: 1px solid white;
+	background-color: transparent;
+	font-size: 20px;
+	color: white;
+	padding: 6px 8px;
+	font-family: 'degular', sans-serif;
+	border-radius: 12px;
+}
+
+.contactUs {
+	background-color: #7f2982;
+	color: white;
+	font-size: 20px;
+	font-family: 'degular', sans-serif;
+	cursor: pointer;
+	border-radius: 12px;
+	padding: 8px 12px;
+	transition: 0.15s all;
+}
+
+.contactUs:hover {
+	background-color: #7e3a81;
+}

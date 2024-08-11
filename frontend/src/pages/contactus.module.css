@@ -1,0 +1,162 @@
+.contactUsModal {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.innerContactUs {
+	background-image: url('/src/assets/panel.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 900px;
+	height: calc(0.714 * 900px);
+	border-radius: 30px;
+	position: relative;
+	padding: 48px 48px 96px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.close {
+	position: absolute;
+	right: 32px;
+	top: 32px;
+	cursor: pointer;
+}
+
+.close img {
+	height: 32px;
+	width: 32px;
+}
+
+.header {
+	font-size: 48px;
+	font-family: 'degular', sans-serif;
+	font-weight: 800;
+}
+
+.contactUsContent {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 64px;
+}
+
+.formContainer form {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.formContainer label {
+	display: flex;
+	flex-direction: column;
+	font-family: 'coolvetica', sans-serif;
+	font-size: 22px;
+	font-weight: 200;
+	gap: 4px;
+}
+
+.formContainer input,
+.formContainer textarea {
+	width: 100%;
+	font-family: 'coolvetica', sans-serif;
+	font-size: 20px;
+	outline: 0;
+	border: 1px solid black;
+	border-radius: 24px;
+	resize: none;
+	padding: 8px 12px;
+	font-weight: 200;
+	transition: all 0.75s;
+}
+
+.formContainer input:focus,
+.formContainer textarea:focus {
+	background-color: #f874ff6e;
+}
+
+.submitBtn {
+	background-color: #da55d6;
+	outline: 0;
+	border: 0;
+	font-family: 'coolvetica', sans-serif;
+	border-radius: 24px;
+	font-size: 24px;
+	font-weight: 500;
+	color: white;
+	cursor: pointer;
+	padding: 8px 0;
+	transition: all 0.1s;
+}
+
+.submitBtn:hover {
+	opacity: 0.9;
+}
+
+.socialContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	font-family: 'coolvetica', sans-serif;
+	align-items: center;
+}
+
+.socialText {
+	font-size: 24px;
+	font-weight: 200;
+	text-align: center;
+}
+
+.socialInfo {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	gap: 24px;
+}
+
+.infoImg {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.infoImg img {
+	height: 42px;
+	width: 42px;
+}
+
+.infoText {
+	text-decoration: none;
+	color: black;
+}
+
+.infoCard {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 22px;
+	font-weight: 200;
+	gap: 24px;
+}
+
+.socials {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.socials a {
+	cursor: pointer;
+	height: 48px;
+	width: 48px;
+}
+
+.socials img {
+	height: 48px;
+	width: 48px;
+	transition: all 0.15s;
+}
+.socials img:hover {
+	opacity: 0.8;
+}
