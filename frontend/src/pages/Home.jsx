@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './home.module.css';
 
 const Home = ({ isOpen }) => {
 	const [isTablet, setIsTablet] = useState(
 		window.matchMedia('(max-width: 1440px)').matches
 	);
-
+	const [isClicked, setIsClicked] = useState(false);
 	const btRef = useRef();
 	const lmRef = useRef();
 
@@ -14,44 +14,18 @@ const Home = ({ isOpen }) => {
 			btRef.current.querySelectorAll('div').forEach(wrapTextWithSpans);
 			document.addEventListener('mousemove', handleMouseMove);
 
-			window.addEventListener('scroll', () => {
-				if (window.scrollY === 0) {
-					lmRef.current.classList.remove('hiddenBtn');
-				} else if (window.scrollY > 25) {
-					// Adjust this value to your desired scroll position
-					lmRef.current.classList.add('hiddenBtn');
-				}
-			});
+			window.addEventListener('scroll', handleScroll);
 		}
 	}, []);
 
 	useEffect(() => {
-		if (isOpen) document.removeEventListener('mousemove', handleMouseMove);
-		else document.addEventListener('mousemove', handleMouseMove);
-	}, [isOpen]);
-
-	function slowScrollTo(targetY, duration = 2000) {
-		const start = window.scrollY;
-		const distance = targetY - start;
-		let startTime = null;
-
-		function animation(currentTime) {
-			if (startTime === null) startTime = currentTime;
-			const timeElapsed = currentTime - startTime;
-			const run = ease(timeElapsed, start, distance, duration);
-			window.scrollTo(0, run);
-			if (timeElapsed < duration) requestAnimationFrame(animation);
+		if (isClicked) {
+			lmRef.current.removeEventListener('mouseleave', handleMouseLeave);
+			document
+				.querySelector('#works')
+				.scrollIntoView({ behavior: 'smooth' });
 		}
-
-		function ease(t, b, c, d) {
-			t /= d / 2;
-			if (t < 1) return (c / 2) * t * t + b;
-			t--;
-			return (-c / 2) * (t * (t - 2) - 1) + b;
-		}
-
-		requestAnimationFrame(animation);
-	}
+	}, [isClicked]);
 
 	function wrapTextWithSpans(element) {
 		const text = element.innerText;
@@ -63,7 +37,7 @@ const Home = ({ isOpen }) => {
 		}
 	}
 
-	function handleMouseMove(e) {
+	const handleMouseMove = useCallback((e) => {
 		const mouseX = e.clientX;
 		const mouseY = e.clientY;
 
@@ -99,47 +73,94 @@ const Home = ({ isOpen }) => {
 			span.style.fontWeight = fontWeight;
 			span.style.fontStretch = fontStretch + '%';
 		});
-	}
+	});
 
+	const handleMouseEnter = () => {
+		if (!isClicked) {
+			window.scrollTo(0, 130);
+		}
+	};
+
+	const handleMouseLeave = useCallback(() => {
+		if (!isClicked) {
+			window.scrollTo(0, 0);
+		}
+	});
+
+	const handleClick = (e) => {
+		setIsClicked(true);
+	};
+
+	const handleScroll = () => {
+		if (window.scrollY == 0) {
+			setIsClicked(false);
+		} else if (window.scrollY < 135) {
+			lmRef.current.classList.remove('hiddenBtn');
+		} else {
+			lmRef.current.classList.add('hiddenBtn');
+		}
+	};
 	return (
 		<div
 			className={styles.home}
 			id='home'
 		>
 			<div className={styles.homeContent}>
-				<div
-					className={styles.boldText}
-					ref={btRef}
-				>
-					<div className={styles.boldLine}>
-						Let's&nbsp;build&nbsp;a&nbsp;brand
-					</div>
-					<div className={styles.boldLine}>together&nbsp;that</div>
-					<div className={styles.boldLine}>
-						you&nbsp;and&nbsp;your
-					</div>
-					<div className={styles.boldLine}>community&nbsp;will</div>
-					<div className={styles.boldLine}>
-						be&nbsp;proud&nbsp;of.
-					</div>
-				</div>
-				<div className={styles.thinText}>
-					<div className={styles.thinLine}>
-						We are a digital media agency
-					</div>
-					<div className={styles.thinLine}>helping influencers,</div>
-					<div className={styles.thinLine}>
-						content creators, and brands
-					</div>
-					<div className={styles.thinLine}>
-						create quality content suitable
-					</div>
-					<div className={styles.thinLine}>to their style.</div>
-				</div>
+				{!isTablet && (
+					<>
+						<div
+							className={styles.boldText}
+							ref={btRef}
+						>
+							<div className={styles.boldLine}>
+								Let's&nbsp;build&nbsp;a&nbsp;brand
+							</div>
+							<div className={styles.boldLine}>
+								together&nbsp;that
+							</div>
+							<div className={styles.boldLine}>
+								you&nbsp;and&nbsp;your
+							</div>
+							<div className={styles.boldLine}>
+								community&nbsp;will
+							</div>
+							<div className={styles.boldLine}>
+								be&nbsp;proud&nbsp;of.
+							</div>
+						</div>
+						<div className={styles.thinText}>
+							<div className={styles.thinLine}>
+								We are a digital media agency
+							</div>
+							<div className={styles.thinLine}>
+								helping influencers,
+							</div>
+							<div className={styles.thinLine}>
+								content creators, and brands
+							</div>
+							<div className={styles.thinLine}>
+								create quality content suitable
+							</div>
+							<div className={styles.thinLine}>
+								to their style.
+							</div>
+						</div>
+					</>
+				)}
+				{isTablet && (
+					<>
+						<div className={styles.mobileText}>
+							Let's build a brand together that <span>you</span>{' '}
+							and <span>your community</span> will be proud of.
+						</div>
+					</>
+				)}
 			</div>
 			<div
 				className={styles.learnMore}
-				onMouseEnter={() => slowScrollTo(130, 1000)}
+				onClick={handleClick}
+				onMouseEnter={handleMouseEnter}
+				onMouseLeave={handleMouseLeave}
 				ref={lmRef}
 			>
 				learn more

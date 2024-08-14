@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
 import styles from './services.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const Services = ({ setIsOpen }) => {
 	const [isMobile, setIsMobile] = useState(
 		window.matchMedia('(max-width: 1296px)').matches
 	);
+	const [isSmallerMobile, setIsSmallerMobile] = useState(
+		window.matchMedia('(max-width: 1080px)').matches
+	);
+
+	const navigate = useNavigate();
+
 	const openModal = () => {
-		setIsOpen(true);
-		document.body.classList.add('modal-open');
+		if (isSmallerMobile) {
+			navigate('/contact-us');
+			window.scrollTo(0, 0);
+		} else {
+			setIsOpen(true);
+			document.body.classList.add('modal-open');
+		}
 	};
 
 	return (
@@ -15,7 +27,7 @@ const Services = ({ setIsOpen }) => {
 			className={styles.services}
 			id='services'
 		>
-			<div className={styles.header}>our offers</div>
+			<div className={styles.header}>our services</div>
 			<div className={styles.innerServices}>
 				<div
 					className={styles.serviceCard}
@@ -23,7 +35,7 @@ const Services = ({ setIsOpen }) => {
 				>
 					<div className={styles.cardIcon}>
 						<img
-							src='/src/assets/Icons/long.png'
+							src='https://brenzystudios.com/assets/Icons/long.png'
 							alt='Long Form Content Icon'
 						/>
 					</div>
@@ -42,7 +54,7 @@ const Services = ({ setIsOpen }) => {
 				>
 					<div className={styles.cardIcon}>
 						<img
-							src='/src/assets/Icons/short.png'
+							src='https://brenzystudios.com/assets/Icons/short.png'
 							alt='Short Form Content Icon'
 						/>
 					</div>
@@ -62,7 +74,7 @@ const Services = ({ setIsOpen }) => {
 				>
 					<div className={styles.cardIcon}>
 						<img
-							src='/src/assets/Icons/longshort.png'
+							src='https://brenzystudios.com/assets/Icons/longshort.png'
 							alt='Long and Short Form Content Icon'
 							className={styles.lsIcon}
 						/>
@@ -83,7 +95,7 @@ const Services = ({ setIsOpen }) => {
 				>
 					<div className={styles.cardIcon}>
 						<img
-							src='/src/assets/Icons/management.png'
+							src='https://brenzystudios.com/assets/Icons/management.png'
 							alt='Channel Management Icon'
 						/>
 					</div>

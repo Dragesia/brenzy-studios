@@ -1,0 +1,45 @@
+.container {
+	margin-top: 76px;
+	margin-bottom: 76px;
+	display: flex;
+	justify-content: center;
+	font-family: 'coolvetica', sans-serif;
+}
+
+.innerContainer {
+	max-width: 756px;
+}
+
+.header {
+	font-size: 42px;
+	padding: 20px 0;
+}
+
+.header2 {
+	font-size: 34px;
+	padding: 16px 0;
+}
+
+.header3 {
+	font-size: 26px;
+	padding: 12px 0;
+}
+
+.header4 {
+	font-size: 22px;
+	padding: 8px 0;
+}
+
+.paragraph,
+.list {
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 1.65;
+	padding-bottom: 8px;
+}
+
+@media only screen and (max-width: 968px) {
+	.innerContainer {
+		padding: 0 16px;
+	}
+}

@@ -11,6 +11,7 @@
 	font-size: 41px;
 	font-family: 'coolvetica', sans-serif;
 	font-weight: 200;
+	text-align: center;
 }
 
 /* .innerWorks {
@@ -52,6 +53,7 @@
 
 .videoContainer:hover {
 	transform: scale(1.025);
+	box-shadow: 0px 0px 34.79px 14.21px rgba(0, 0, 0, 0.15);
 }
 
 .worksHeader {
@@ -115,5 +117,36 @@
 @media only screen and (max-width: 1296px) {
 	.videoSlider {
 		grid-template-columns: 1fr;
+	}
+}
+
+@media only screen and (max-width: 576px) {
+	.header {
+		font-size: 32px;
+		padding: 0 16px;
+	}
+
+	.worksHeader {
+		top: 4px;
+	}
+
+	.worksHeader a {
+		font-size: 18px;
+	}
+
+	.innerWorks {
+		padding: 32px;
+	}
+
+	.videoContainer video {
+		height: 360px;
+	}
+
+	.sliderArrowRight {
+		right: 2px;
+	}
+
+	.sliderArrowLeft {
+		left: 2px;
 	}
 }

@@ -16,6 +16,8 @@
 	flex-direction: row;
 	align-items: center;
 	gap: 12px;
+	text-decoration: none;
+	color: black;
 }
 
 .logoImg {
@@ -79,4 +81,51 @@
 
 .contactUs:hover::after {
 	transform: scaleY(1);
+}
+
+.mobileMenu {
+	display: none;
+}
+
+.mobileHeader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(249, 191, 229, 0);
+	backdrop-filter: blur(5px);
+	width: 100vw;
+	height: 100px;
+	z-index: 7777;
+	transition: background-color 0.5s;
+}
+
+@media only screen and (max-width: 1080px) {
+	.header {
+		align-items: center;
+	}
+	.contactUs {
+		display: none;
+	}
+	.mobileMenu {
+		display: block;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.logoText {
+		display: none;
+	}
+
+	.logoImg img {
+		height: 48px;
+		width: auto;
+	}
+
+	.whiteBackground {
+		display: none !important;
+	}
+
+	/* .mobileMenu {
+		transform: translateY(4px);
+	} */
 }

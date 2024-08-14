@@ -1,10 +1,26 @@
 import React, { useState } from 'react';
 import styles from './works.module.css';
 
+const isMobile = window.matchMedia('(max-width: 1296px)').matches;
+
 const Works = () => {
-	const [isMobile, setIsMobile] = useState(
-		window.matchMedia('(max-width: 1296px)').matches
-	);
+	// const [isMobile, setIsMobile] = useState(
+	// 	window.matchMedia('(max-width: 1296px)').matches
+	// );
+	const [slider, setSlider] = useState(0);
+
+	const handlePrevSlide = () => {
+		if (isMobile && slider < 1) setSlider(5);
+		else if (!isMobile && slider < 1) setSlider(1);
+		else setSlider(slider - 1);
+	};
+
+	const handleNextSlide = () => {
+		if (isMobile && slider > 4) setSlider(0);
+		else if (!isMobile && slider > 0) setSlider(0);
+		else setSlider(slider + 1);
+	};
+
 	const handleVideoMouseEnter = (e) => {
 		e.target.currentTime = 0;
 		e.target.play();
@@ -20,11 +36,14 @@ const Works = () => {
 		>
 			<div className={styles.header}>look at some of our work</div>
 			<div className={styles.innerWorks}>
-				<div className={styles.sliderArrowLeft}>
+				<div
+					className={styles.sliderArrowLeft}
+					onClick={handlePrevSlide}
+				>
 					<svg
-						xmlns='http://www.w3.org/2000/svg'
+						xmlns='https://www.w3.org/2000/svg'
 						version='1.1'
-						xmlns:xlink='http://www.w3.org/1999/xlink'
+						xmlns:xlink='https://www.w3.org/1999/xlink'
 						width='27'
 						height='27'
 						x='0'
@@ -48,52 +67,48 @@ const Works = () => {
 						</g>
 					</svg>
 				</div>
-				<div className={styles.worksHeader}>
-					<a
-						href='https://youtube.com/azzapp'
-						target='_blank'
-					>
-						azzapp
-						<img
-							src='/src/assets/Icons/Youtube.png'
-							alt='Youtube Icon'
-						/>
-					</a>
-				</div>
 				<div className={styles.videoSlider}>
-					{isMobile && (
-						<a
-							target='_blank'
-							className={styles.videoContainer}
-						>
-							<video
-								src='/src/assets/videos/azzapp1.mp4'
-								onMouseEnter={handleVideoMouseEnter}
-								onMouseLeave={handleVideoMouseLeave}
-								muted
-							></video>
-						</a>
-					)}
-					{!isMobile && (
+					{!isMobile && slider == 0 && (
 						<>
+							<div className={styles.worksHeader}>
+								<a
+									href='https://youtube.com/azzapp'
+									target='_blank'
+								>
+									Azzapp
+									<img
+										src='https://brenzystudios.com/assets/Icons/Youtube.png'
+										alt='Youtube Icon'
+									/>
+								</a>
+							</div>
+
 							<a
 								target='_blank'
 								className={styles.videoContainer}
+								href='https://www.youtube.com/shorts/RhJn40jTa8s'
 							>
 								<video
-									src='/src/assets/videos/azzapp1.mp4'
+									src='https://brenzystudios.com/assets/videos/azzapp1.mp4'
 									onMouseEnter={handleVideoMouseEnter}
 									onMouseLeave={handleVideoMouseLeave}
 									muted
+									playsinline
+									controls='false'
+									webkit-playsinline
 								></video>
 							</a>
 							<a
 								target='_blank'
 								className={styles.videoContainer}
+								href='https://www.youtube.com/shorts/GCvqxWsHFHQ'
 							>
 								<video
-									src='/src/assets/videos/azzapp2.mp4'
+									src='https://brenzystudios.com/assets/videos/azzapp2.mp4'
 									muted
+									playsinline
+									controls='false'
+									webkit-playsinline
 									onMouseEnter={handleVideoMouseEnter}
 									onMouseLeave={handleVideoMouseLeave}
 								></video>
@@ -101,56 +116,276 @@ const Works = () => {
 							<a
 								target='_blank'
 								className={styles.videoContainer}
+								href='https://www.youtube.com/shorts/e--6I5UazlQ'
 							>
 								<video
-									src='/src/assets/videos/azzapp3.mp4'
+									src='https://brenzystudios.com/assets/videos/azzapp3.mp4'
 									onMouseEnter={handleVideoMouseEnter}
 									onMouseLeave={handleVideoMouseLeave}
 									muted
+									playsinline
+									controls='false'
+									webkit-playsinline
 								></video>
 							</a>
 						</>
 					)}
-
-					{/* <a
-						target='_blank'
-						className={styles.videoContainer}
-					>
-						<video
-							src='/src/assets/videos/alois1.mp4'
-							onMouseEnter={handleVideoMouseEnter}
-							onMouseLeave={handleVideoMouseLeave}
-							muted
-						></video>
-					</a>
-					<a
-						target='_blank'
-						className={styles.videoContainer}
-					>
-						<video
-							src='/src/assets/videos/alois2.mp4'
-							onMouseEnter={handleVideoMouseEnter}
-							onMouseLeave={handleVideoMouseLeave}
-							muted
-						></video>
-					</a>
-					<a
-						target='_blank'
-						className={styles.videoContainer}
-					>
-						<video
-							src='/src/assets/videos/alois3.mp4'
-							onMouseEnter={handleVideoMouseEnter}
-							onMouseLeave={handleVideoMouseLeave}
-							muted
-						></video>
-					</a> */}
+					{!isMobile && slider == 1 && (
+						<>
+							<div className={styles.worksHeader}>
+								<a
+									href='https://www.youtube.com/@AloisNL'
+									target='_blank'
+								>
+									AloisNL
+									<img
+										src='https://brenzystudios.com/assets/Icons/Youtube.png'
+										alt='Youtube Icon'
+									/>
+								</a>
+							</div>
+							<a
+								target='_blank'
+								className={styles.videoContainer}
+								href='https://www.youtube.com/shorts/i0nmMfvNMD0'
+							>
+								<video
+									src='https://brenzystudios.com/assets/videos/alois1.mp4'
+									onMouseEnter={handleVideoMouseEnter}
+									onMouseLeave={handleVideoMouseLeave}
+									muted
+									playsinline
+									controls='false'
+									webkit-playsinline
+								></video>
+							</a>
+							<a
+								target='_blank'
+								className={styles.videoContainer}
+								href='https://www.youtube.com/shorts/UbIdfoJ2RUo'
+							>
+								<video
+									src='https://brenzystudios.com/assets/videos/alois2.mp4'
+									onMouseEnter={handleVideoMouseEnter}
+									onMouseLeave={handleVideoMouseLeave}
+									muted
+									playsinline
+									controls='false'
+									webkit-playsinline
+								></video>
+							</a>
+							<a
+								target='_blank'
+								className={styles.videoContainer}
+								href='https://youtube.com/shorts/k2PK_pnmw2U'
+							>
+								<video
+									src='https://brenzystudios.com/assets/videos/alois3.mp4'
+									onMouseEnter={handleVideoMouseEnter}
+									onMouseLeave={handleVideoMouseLeave}
+									muted
+									playsinline
+									controls='false'
+									webkit-playsinline
+								></video>
+							</a>
+						</>
+					)}
+					{isMobile && slider == 0 && (
+						<>
+							<div className={styles.worksHeader}>
+								<a
+									href='https://www.youtube.com/@Azzapp'
+									target='_blank'
+								>
+									Azzapp
+									<img
+										src='https://brenzystudios.com/assets/Icons/Youtube.png'
+										alt='Youtube Icon'
+									/>
+								</a>
+							</div>
+							<a
+								target='_blank'
+								className={styles.videoContainer}
+								href='https://www.youtube.com/shorts/RhJn40jTa8s'
+							>
+								<video
+									src='https://brenzystudios.com/assets/videos/azzapp1.mp4'
+									onMouseEnter={handleVideoMouseEnter}
+									onMouseLeave={handleVideoMouseLeave}
+									muted
+									playsinline
+									controls='false'
+									webkit-playsinline
+								></video>
+							</a>
+						</>
+					)}
+					{isMobile && slider == 1 && (
+						<>
+							<div className={styles.worksHeader}>
+								<a
+									href='https://www.youtube.com/@Azzapp'
+									target='_blank'
+								>
+									Azzapp
+									<img
+										src='https://brenzystudios.com/assets/Icons/Youtube.png'
+										alt='Youtube Icon'
+									/>
+								</a>
+							</div>
+							<a
+								target='_blank'
+								className={styles.videoContainer}
+								href='https://www.youtube.com/shorts/RhJn40jTa8s'
+							>
+								<video
+									src='https://brenzystudios.com/assets/videos/azzapp2.mp4'
+									onMouseEnter={handleVideoMouseEnter}
+									onMouseLeave={handleVideoMouseLeave}
+									muted
+									playsinline
+									controls='false'
+									webkit-playsinline
+								></video>
+							</a>
+						</>
+					)}
+					{isMobile && slider == 2 && (
+						<>
+							<div className={styles.worksHeader}>
+								<a
+									href='https://www.youtube.com/@Azzapp'
+									target='_blank'
+								>
+									Azzapp
+									<img
+										src='https://brenzystudios.com/assets/Icons/Youtube.png'
+										alt='Youtube Icon'
+									/>
+								</a>
+							</div>
+							<a
+								target='_blank'
+								className={styles.videoContainer}
+								href='https://www.youtube.com/shorts/RhJn40jTa8s'
+							>
+								<video
+									src='https://brenzystudios.com/assets/videos/azzapp3.mp4'
+									onMouseEnter={handleVideoMouseEnter}
+									onMouseLeave={handleVideoMouseLeave}
+									muted
+									playsinline
+									controls='false'
+									webkit-playsinline
+								></video>
+							</a>
+						</>
+					)}
+					{isMobile && slider == 3 && (
+						<>
+							<div className={styles.worksHeader}>
+								<a
+									href='https://www.youtube.com/@AloisNL'
+									target='_blank'
+								>
+									AloisNL
+									<img
+										src='https://brenzystudios.com/assets/Icons/Youtube.png'
+										alt='Youtube Icon'
+									/>
+								</a>
+							</div>
+							<a
+								target='_blank'
+								className={styles.videoContainer}
+								href='https://www.youtube.com/shorts/RhJn40jTa8s'
+							>
+								<video
+									src='https://brenzystudios.com/assets/videos/alois1.mp4'
+									onMouseEnter={handleVideoMouseEnter}
+									onMouseLeave={handleVideoMouseLeave}
+									muted
+									playsinline
+									controls='false'
+									webkit-playsinline
+								></video>
+							</a>
+						</>
+					)}
+					{isMobile && slider == 4 && (
+						<>
+							<div className={styles.worksHeader}>
+								<a
+									href='https://www.youtube.com/@AloisNL'
+									target='_blank'
+								>
+									AloisNL
+									<img
+										src='https://brenzystudios.com/assets/Icons/Youtube.png'
+										alt='Youtube Icon'
+									/>
+								</a>
+							</div>
+							<a
+								target='_blank'
+								className={styles.videoContainer}
+								href='https://www.youtube.com/shorts/RhJn40jTa8s'
+							>
+								<video
+									src='https://brenzystudios.com/assets/videos/alois2.mp4'
+									onMouseEnter={handleVideoMouseEnter}
+									onMouseLeave={handleVideoMouseLeave}
+									muted
+									playsinline
+									controls='false'
+									webkit-playsinline
+								></video>
+							</a>
+						</>
+					)}
+					{isMobile && slider == 5 && (
+						<>
+							<div className={styles.worksHeader}>
+								<a
+									href='https://www.youtube.com/@Azzapp'
+									target='_blank'
+								>
+									AloisNL
+									<img
+										src='https://brenzystudios.com/assets/Icons/Youtube.png'
+										alt='Youtube Icon'
+									/>
+								</a>
+							</div>
+							<a
+								target='_blank'
+								className={styles.videoContainer}
+								href='https://www.youtube.com/shorts/RhJn40jTa8s'
+							>
+								<video
+									src='https://brenzystudios.com/assets/videos/alois3.mp4'
+									onMouseEnter={handleVideoMouseEnter}
+									onMouseLeave={handleVideoMouseLeave}
+									muted
+									playsinline
+									controls='false'
+									webkit-playsinline
+								></video>
+							</a>
+						</>
+					)}
 				</div>
-				<div className={styles.sliderArrowRight}>
+				<div
+					className={styles.sliderArrowRight}
+					onClick={handleNextSlide}
+				>
 					<svg
-						xmlns='http://www.w3.org/2000/svg'
+						xmlns='https://www.w3.org/2000/svg'
 						version='1.1'
-						xmlns:xlink='http://www.w3.org/1999/xlink'
+						xmlns:xlink='https://www.w3.org/1999/xlink'
 						width='27'
 						height='27'
 						x='0'

@@ -9,12 +9,12 @@
 	position: relative;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	background-image: url('/src/assets/stats.png');
-	background-size: cover;
+	background-image: url('https://brenzystudios.com/assets/stats.png');
 	background-repeat: no-repeat;
 	width: 950px;
 	height: calc(0.385 * 950px);
 	border-radius: 30px;
+	z-index: 10;
 }
 
 .statContainer {
@@ -63,5 +63,24 @@
 		height: auto;
 		padding: 32px 100px;
 		gap: 24px;
+	}
+}
+
+@media only screen and (max-width: 576px) {
+	.stats {
+		padding: 0 0 48px;
+	}
+	.innerStats {
+		padding: 32px 64px;
+	}
+	.statHeader {
+		font-size: 24px;
+	}
+	.statText {
+		font-size: 48px;
+	}
+
+	.statText > span {
+		font-size: 30px;
 	}
 }

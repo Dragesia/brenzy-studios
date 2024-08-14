@@ -13,17 +13,21 @@ const Sidebar = () => {
 		const homeEl = document.querySelector('#home');
 		const worksEl = document.querySelector('#works');
 		const servicesEl = document.querySelector('#services');
-		const aboutusEl = document.querySelector('#about-us');
+		// const aboutusEl = document.querySelector('#about-us');
 
-		setSections([homeEl, worksEl, servicesEl, aboutusEl]);
+		setSections([homeEl, worksEl, servicesEl]);
 	}, []);
 
-	window.onscroll = () => {
-		sections.forEach((section) => {
-			const sectionTop = section.offsetTop;
-			if (scrollY >= sectionTop - 450) setActive(section.id);
-		});
-	};
+	useEffect(() => {
+		if (sections.length) {
+			window.onscroll = () => {
+				sections.forEach((section) => {
+					const sectionTop = section.offsetTop;
+					if (scrollY >= sectionTop - 450) setActive(section.id);
+				});
+			};
+		}
+	}, [sections]);
 
 	const handleMouseOver = (pageBtnName) => {
 		setHovered(pageBtnName);
@@ -107,7 +111,7 @@ const Sidebar = () => {
 									: `${styles.navelText} hidden`
 							}
 						>
-							Offers
+							Services
 						</div>
 					</div>
 				</a>
